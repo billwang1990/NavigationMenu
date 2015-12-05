@@ -93,7 +93,7 @@ public class YQNavigationDropDownMenu: UIView {
     private var menuWrapper: UIView!
     private var collectionViewHeight: CGFloat = 0
     
-    public var didSelectItemAtIndexHandler: ((indexPath: Int) -> ())?
+    public var didSelectItemAtIndexHandler: ((index: Int) -> ())?
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -176,7 +176,13 @@ public class YQNavigationDropDownMenu: UIView {
         let itemWidth = (menuWrapperBounds.width - 30 ) / CGFloat(maxItemsPerRow)
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSizeMake(itemWidth, itemWidth)
-//        layout.minimumInteritemSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        
+        if items.count < maxItemsPerRow{
+            layout.minimumInteritemSpacing = (menuWrapperBounds.width - 20 - itemWidth * CGFloat(items.count)) / CGFloat(items.count - 1)
+        }else{
+            layout.minimumInteritemSpacing = 1
+        }
         layout.minimumLineSpacing = 5
         layout.scrollDirection = UICollectionViewScrollDirection.Vertical
         layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10)
@@ -186,9 +192,9 @@ public class YQNavigationDropDownMenu: UIView {
         
         collectionView = YQCollectionView(frame:  CGRectMake(menuWrapperBounds.origin.x, menuWrapperBounds.origin.y, menuWrapperBounds.width, collectionViewHeight), collectionViewLayout: layout, items: items, config: configuration)
         
-        collectionView.selectItemAtIndexPathHandler = {[unowned self] (indexPath: Int) -> () in
-            self.didSelectItemAtIndexHandler!(indexPath: indexPath)
-            self.setMenuTitle("\(self.items[indexPath].title)")
+        collectionView.selectItemAtIndexPathHandler = {[unowned self] (index: Int) -> () in
+            self.didSelectItemAtIndexHandler!(index: index)
+            self.menuTitle.text = self.items[index].title
             self.hideMenu()
             self.isShown = false
             self.layoutSubviews()
@@ -225,7 +231,7 @@ public class YQNavigationDropDownMenu: UIView {
         
         // Reload data to dismiss highlight color of selected cell
         collectionView.reloadData()
-        
+
         UIView.animateWithDuration(
             animationDuration * 1.5,
             delay: 0,
@@ -235,7 +241,9 @@ public class YQNavigationDropDownMenu: UIView {
             animations: { [unowned self] in
                 self.collectionView.frame.origin.y = CGFloat(0)
                 self.backgroundView.alpha = self.maskBackgroundOpacity
-            }, completion: nil
+            }, completion: {[unowned self] _ in
+                self.menuButton.enabled = true
+            }
         )
     }
     
@@ -264,6 +272,7 @@ public class YQNavigationDropDownMenu: UIView {
             self.backgroundView.alpha = 0
             }, completion: {[unowned self] _ in
                 self.menuWrapper.hidden = true
+                self.menuButton.enabled = true
             })
     }
     
@@ -273,12 +282,9 @@ public class YQNavigationDropDownMenu: UIView {
             })
     }
     
-    func setMenuTitle(title: String) {
-        menuTitle.text = title
-    }
-    
     func menuButtonTapped(sender: UIButton) {
         isShown = !isShown
+        self.menuButton.enabled = false
         if isShown == true {
             showMenu()
         } else {
