@@ -14,6 +14,15 @@
 		C8F01C911C11678C00B5664F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8F01C901C11678C00B5664F /* Assets.xcassets */; };
 		C8F01C941C11678C00B5664F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8F01C921C11678C00B5664F /* LaunchScreen.storyboard */; };
 		C8F01C9F1C11678C00B5664F /* YQNavigationBarMenuDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F01C9E1C11678C00B5664F /* YQNavigationBarMenuDemoTests.swift */; };
+		C8F01CAA1C11682300B5664F /* YQNavigationDropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F01CA91C11682300B5664F /* YQNavigationDropDownMenu.swift */; };
+		C8F01CB41C12BA8300B5664F /* YQCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8F01CB31C12BA8300B5664F /* YQCollectionViewCell.xib */; };
+		C8F01CB81C12BB1300B5664F /* arrow_down_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C8F01CB51C12BB1300B5664F /* arrow_down_icon.png */; };
+		C8F01CB91C12BB1300B5664F /* arrow_down_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8F01CB61C12BB1300B5664F /* arrow_down_icon@2x.png */; };
+		C8F01CBA1C12BB1300B5664F /* arrow_down_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8F01CB71C12BB1300B5664F /* arrow_down_icon@3x.png */; };
+		C8F01CBC1C12CEDE00B5664F /* DropDownMenuConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F01CBB1C12CEDE00B5664F /* DropDownMenuConfiguration.swift */; };
+		C8F01CBE1C12CF2700B5664F /* YQCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F01CBD1C12CF2700B5664F /* YQCollectionView.swift */; };
+		C8F01CC21C12D37B00B5664F /* settings-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C8F01CC01C12D37B00B5664F /* settings-icon.png */; };
+		C8F01CC31C12D37B00B5664F /* settings-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8F01CC11C12D37B00B5664F /* settings-icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +47,15 @@
 		C8F01C9A1C11678C00B5664F /* YQNavigationBarMenuDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YQNavigationBarMenuDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8F01C9E1C11678C00B5664F /* YQNavigationBarMenuDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQNavigationBarMenuDemoTests.swift; sourceTree = "<group>"; };
 		C8F01CA01C11678C00B5664F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8F01CA91C11682300B5664F /* YQNavigationDropDownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YQNavigationDropDownMenu.swift; path = YQNavigationDropDownMenu/YQNavigationDropDownMenu.swift; sourceTree = "<group>"; };
+		C8F01CB31C12BA8300B5664F /* YQCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = YQCollectionViewCell.xib; path = YQNavigationDropDownMenu/YQCollectionViewCell.xib; sourceTree = "<group>"; };
+		C8F01CB51C12BB1300B5664F /* arrow_down_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow_down_icon.png; path = YQNavigationDropDownMenu/arrow_down_icon.png; sourceTree = "<group>"; };
+		C8F01CB61C12BB1300B5664F /* arrow_down_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow_down_icon@2x.png"; path = "YQNavigationDropDownMenu/arrow_down_icon@2x.png"; sourceTree = "<group>"; };
+		C8F01CB71C12BB1300B5664F /* arrow_down_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow_down_icon@3x.png"; path = "YQNavigationDropDownMenu/arrow_down_icon@3x.png"; sourceTree = "<group>"; };
+		C8F01CBB1C12CEDE00B5664F /* DropDownMenuConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DropDownMenuConfiguration.swift; path = YQNavigationDropDownMenu/DropDownMenuConfiguration.swift; sourceTree = "<group>"; };
+		C8F01CBD1C12CF2700B5664F /* YQCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YQCollectionView.swift; path = YQNavigationDropDownMenu/YQCollectionView.swift; sourceTree = "<group>"; };
+		C8F01CC01C12D37B00B5664F /* settings-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-icon.png"; sourceTree = "<group>"; };
+		C8F01CC11C12D37B00B5664F /* settings-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +99,10 @@
 			children = (
 				C8F01C871C11678C00B5664F /* AppDelegate.swift */,
 				C8F01C891C11678C00B5664F /* MasterViewController.swift */,
+				C8F01CC01C12D37B00B5664F /* settings-icon.png */,
+				C8F01CC11C12D37B00B5664F /* settings-icon@2x.png */,
 				C8F01C8B1C11678C00B5664F /* DetailViewController.swift */,
+				C8F01CBF1C12D33200B5664F /* YQNavigationDropMenu */,
 				C8F01C8D1C11678C00B5664F /* Main.storyboard */,
 				C8F01C901C11678C00B5664F /* Assets.xcassets */,
 				C8F01C921C11678C00B5664F /* LaunchScreen.storyboard */,
@@ -97,6 +118,20 @@
 				C8F01CA01C11678C00B5664F /* Info.plist */,
 			);
 			path = YQNavigationBarMenuDemoTests;
+			sourceTree = "<group>";
+		};
+		C8F01CBF1C12D33200B5664F /* YQNavigationDropMenu */ = {
+			isa = PBXGroup;
+			children = (
+				C8F01CA91C11682300B5664F /* YQNavigationDropDownMenu.swift */,
+				C8F01CBB1C12CEDE00B5664F /* DropDownMenuConfiguration.swift */,
+				C8F01CBD1C12CF2700B5664F /* YQCollectionView.swift */,
+				C8F01CB51C12BB1300B5664F /* arrow_down_icon.png */,
+				C8F01CB61C12BB1300B5664F /* arrow_down_icon@2x.png */,
+				C8F01CB71C12BB1300B5664F /* arrow_down_icon@3x.png */,
+				C8F01CB31C12BA8300B5664F /* YQCollectionViewCell.xib */,
+			);
+			name = YQNavigationDropMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,9 +215,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8F01CB81C12BB1300B5664F /* arrow_down_icon.png in Resources */,
 				C8F01C941C11678C00B5664F /* LaunchScreen.storyboard in Resources */,
 				C8F01C911C11678C00B5664F /* Assets.xcassets in Resources */,
+				C8F01CC21C12D37B00B5664F /* settings-icon.png in Resources */,
+				C8F01CB41C12BA8300B5664F /* YQCollectionViewCell.xib in Resources */,
+				C8F01CC31C12D37B00B5664F /* settings-icon@2x.png in Resources */,
+				C8F01CBA1C12BB1300B5664F /* arrow_down_icon@3x.png in Resources */,
 				C8F01C8F1C11678C00B5664F /* Main.storyboard in Resources */,
+				C8F01CB91C12BB1300B5664F /* arrow_down_icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +242,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8F01C8C1C11678C00B5664F /* DetailViewController.swift in Sources */,
+				C8F01CAA1C11682300B5664F /* YQNavigationDropDownMenu.swift in Sources */,
 				C8F01C8A1C11678C00B5664F /* MasterViewController.swift in Sources */,
+				C8F01CBC1C12CEDE00B5664F /* DropDownMenuConfiguration.swift in Sources */,
+				C8F01CBE1C12CF2700B5664F /* YQCollectionView.swift in Sources */,
 				C8F01C881C11678C00B5664F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

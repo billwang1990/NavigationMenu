@@ -12,7 +12,7 @@ class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var objects = [AnyObject]()
-
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,25 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+        self.setupMenu()
+    }
+    
+    func setupMenu(){
+
+        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.0/255.0, green:180/255.0, blue:220/255.0, alpha: 1.0)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        
+        let items = [MenuItem(icon:"settings-icon",title:"button1" ),MenuItem(icon:"settings-icon",title:"button2"), MenuItem(icon:"settings-icon",title:"button3"), MenuItem(icon:"settings-icon",title:"button5"), MenuItem(icon:"settings-icon",title:"button6")]
+        
+        let menuView = YQNavigationDropDownMenu(title: items[0].title, items: items, navigationController: self.navigationController!)
+        
+        menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
+            print("Did select item at index: \(indexPath)")
+        }
+        
+        self.navigationItem.titleView = menuView
+
     }
 
     override func viewWillAppear(animated: Bool) {
