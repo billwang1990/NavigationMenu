@@ -1,26 +1,22 @@
-//
-//  YQCollectionView.swift
-//  YQNavigationBarMenuDemo
-//
-//  Created by Yaqing Wang on 12/5/15.
-//  Copyright © 2015 thoughtworks. All rights reserved.
-//
-
 import UIKit
 
-public struct MenuItem {
-    var icon: String
-    var title: String
+public protocol MenuItemType{
+    var icon: String { get }
+    var title: String { get }
 }
 
+public struct MenuItem: MenuItemType {
+    public var icon: String
+    public var title: String
+}
 
 class YQCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var items: [MenuItem]!
+    var items: [MenuItemType]!
     var selectItemAtIndexPathHandler: ((indexPath: Int) -> ())?
     var configuration: DropDownMenuConfiguration!
     
-    init(frame: CGRect, collectionViewLayout: UICollectionViewLayout, items: [MenuItem], config: DropDownMenuConfiguration) {
+    init(frame: CGRect, collectionViewLayout: UICollectionViewLayout, items: [MenuItemType], config: DropDownMenuConfiguration) {
         
         super.init(frame: frame, collectionViewLayout: collectionViewLayout)
         
@@ -67,7 +63,7 @@ class YQCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var title: UILabel!
     
-    var menuItem:MenuItem!{
+    var menuItem:MenuItemType!{
         didSet{
             //TODO: config subviews
             image.image = UIImage(named: menuItem.icon)

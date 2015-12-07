@@ -1,10 +1,3 @@
-//
-//  YQNavigationDropDownMenu.swift
-//  YQNavigationBarMenuDemo
-//
-//  Created by Yaqing Wang on 12/4/15.
-//  Copyright © 2015 thoughtworks. All rights reserved.
-//
 
 import UIKit
 
@@ -88,7 +81,7 @@ public class YQNavigationDropDownMenu: UIView {
     private var backgroundView: UIView!
     private var configuration: DropDownMenuConfiguration
     private var collectionView: YQCollectionView!
-    private var items: [MenuItem]!
+    private var items: [MenuItemType]!
     private var isShown: Bool!
     private var menuWrapper: UIView!
     private var collectionViewHeight: CGFloat = 0
@@ -99,7 +92,7 @@ public class YQNavigationDropDownMenu: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public init(title: String, items: [MenuItem], navigationController: UINavigationController, configuration:DropDownMenuConfiguration = DropDownMenuConfiguration.shareInstance) {
+    public init(title: String, items: [MenuItemType], navigationController: UINavigationController, configuration:DropDownMenuConfiguration = DropDownMenuConfiguration.shareInstance) {
         
         // Navigation controller
         self.navigationController = navigationController
@@ -231,7 +224,7 @@ public class YQNavigationDropDownMenu: UIView {
         
         // Reload data to dismiss highlight color of selected cell
         collectionView.reloadData()
-
+        
         UIView.animateWithDuration(
             animationDuration * 1.5,
             delay: 0,
