@@ -1,7 +1,7 @@
 
 import UIKit
 
-public class YQNavigationDropDownMenu: UIView {
+public class YQNavigationDropDownMenu: UIView, UINavigationControllerDelegate {
     
     private var cellTextLabelColor: UIColor {
         get{
@@ -85,6 +85,7 @@ public class YQNavigationDropDownMenu: UIView {
     private var isShown: Bool!
     private var menuWrapper: UIView!
     private var collectionViewHeight: CGFloat = 0
+    private weak var realNavControllerDelegate: UINavigationControllerDelegate?
     
     public var didSelectItemAtIndexHandler: ((index: Int) -> ())?
     
@@ -108,6 +109,8 @@ public class YQNavigationDropDownMenu: UIView {
         
         super.init(frame:frame)
         
+        self.realNavControllerDelegate = self.navigationController?.delegate
+        self.navigationController?.delegate = self
         self.navigationController?.view.addObserver(self, forKeyPath: "frame", options: .New, context: nil)
         
         isShown = false
@@ -115,6 +118,7 @@ public class YQNavigationDropDownMenu: UIView {
         
         setupButtonAndTitle(title)
         setupDropDownMenu()
+        
     }
     
     public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
@@ -282,6 +286,16 @@ public class YQNavigationDropDownMenu: UIView {
             showMenu()
         } else {
             hideMenu()
+        }
+    }
+    
+    //NavigationController delegate
+    public func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool){
+        if isShown == true{
+            hideMenu()
+        }
+        if let _  = realNavControllerDelegate{
+            realNavControllerDelegate?.navigationController?(navigationController, willShowViewController: viewController, animated: animated)
         }
     }
 }
