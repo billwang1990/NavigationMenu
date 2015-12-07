@@ -1,6 +1,6 @@
 import UIKit
 
-public struct DropDownMenuConfiguration {
+public class DropDownMenuConfiguration {
     
     static let shareInstance = DropDownMenuConfiguration()
     
