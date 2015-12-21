@@ -4,72 +4,73 @@ import UIKit
 public class YQNavigationDropDownMenu: UIView, UINavigationControllerDelegate {
     
     private var cellTextLabelColor: UIColor {
-        get{
+        get {
             return configuration.cellTextLabelColor
         }
-        set(val){
+        set(val) {
             configuration.cellTextLabelColor = val
         }
     }
     
-    private var cellTextLabelFont: UIFont{
-        get{
+    private var cellTextLabelFont: UIFont {
+        get {
             return configuration.cellTextLabelFont
-        }set(val){
+        }
+        set(val) {
             configuration.cellTextLabelFont = val
         }
     }
     
-    private var animationDuration: NSTimeInterval{
-        get{
+    private var animationDuration: NSTimeInterval {
+        get {
             return configuration.animationDuration
         }
-        set(val){
+        set(val) {
             configuration.animationDuration = val
         }
     }
     
-    private var maxItemsPerRow:Int{
-        get{
+    private var maxItemsPerRow: Int {
+        get {
             return configuration.maxItemsPerRow
         }
-        set(val){
+        set(val) {
             configuration.maxItemsPerRow = val
         }
     }
     
     private var arrowImage: UIImage {
-        get{
+        get {
             return configuration.arrowImage
         }
-        set(val){
+        set(val) {
             configuration.arrowImage = val
         }
     }
     
-    private var arrowPadding: CGFloat{
-        get{
+    private var arrowPadding: CGFloat {
+        get {
             return configuration.arrowPadding
         }
-        set(val){
+        set(val) {
             configuration.arrowPadding = val
         }
     }
     
-    private var maskBackgroundOpacity: CGFloat{
-        get{
+    private var maskBackgroundOpacity: CGFloat {
+        get {
             return configuration.maskBackgroundOpacity
         }
-        set(val){
+        set(val) {
             configuration.maskBackgroundOpacity = val
         }
     }
     
-    private var menuBackgroundColor: UIColor{
-        get{
+    private var menuBackgroundColor: UIColor {
+        get {
             return configuration.menuBackgroundColor
         }
-        set(val){
+        set(val) {
             configuration.menuBackgroundColor = val
         }
     }
@@ -94,7 +95,6 @@ public class YQNavigationDropDownMenu: UIView, UINavigationControllerDelegate {
     }
     
     public init(title: String, items: [MenuItemType], navigationController: UINavigationController, configuration:DropDownMenuConfiguration = DropDownMenuConfiguration.shareInstance) {
-        
         // Navigation controller
         self.navigationController = navigationController
         
@@ -118,7 +118,6 @@ public class YQNavigationDropDownMenu: UIView, UINavigationControllerDelegate {
         
         setupButtonAndTitle(title)
         setupDropDownMenu()
-        
     }
     
     public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
@@ -136,7 +135,7 @@ public class YQNavigationDropDownMenu: UIView, UINavigationControllerDelegate {
         menuArrow.center = CGPointMake(CGRectGetMaxX(menuTitle.frame) + arrowPadding, frame.size.height/2)
     }
     
-    func setupButtonAndTitle(title:String){
+    func setupButtonAndTitle(title:String) {
         // Init button as navigation title
         menuButton = UIButton(frame: frame)
         menuButton.addTarget(self, action: "menuButtonTapped:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -144,7 +143,7 @@ public class YQNavigationDropDownMenu: UIView, UINavigationControllerDelegate {
         
         menuTitle = UILabel(frame: frame)
         menuTitle.text = title
-        if let titleColor =  navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor{
+        if let titleColor =  navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor {
             menuTitle.textColor = titleColor
         }
         menuTitle.textAlignment = NSTextAlignment.Center
@@ -155,7 +154,7 @@ public class YQNavigationDropDownMenu: UIView, UINavigationControllerDelegate {
         menuButton.addSubview(menuArrow)
     }
     
-    func setupDropDownMenu(){
+    func setupDropDownMenu() {
         let window = UIApplication.sharedApplication().delegate!.window!
         let menuWrapperBounds = window!.bounds
         
@@ -175,9 +174,9 @@ public class YQNavigationDropDownMenu: UIView, UINavigationControllerDelegate {
         layout.itemSize = CGSizeMake(itemWidth, itemWidth)
         layout.minimumInteritemSpacing = 0
         
-        if items.count < maxItemsPerRow{
+        if items.count < maxItemsPerRow {
             layout.minimumInteritemSpacing = (menuWrapperBounds.width - 20 - itemWidth * CGFloat(items.count)) / CGFloat(items.count - 1)
-        }else{
+        } else {
             layout.minimumInteritemSpacing = 1
         }
         layout.minimumLineSpacing = 5
@@ -290,11 +289,11 @@ public class YQNavigationDropDownMenu: UIView, UINavigationControllerDelegate {
     }
     
     //NavigationController delegate
-    public func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool){
-        if isShown == true{
+    public func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+        if isShown == true {
             hideMenu()
         }
-        if let _  = realNavControllerDelegate{
+        if let _  = realNavControllerDelegate {
             realNavControllerDelegate?.navigationController?(navigationController, willShowViewController: viewController, animated: animated)
         }
     }

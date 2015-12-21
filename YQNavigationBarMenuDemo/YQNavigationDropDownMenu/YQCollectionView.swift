@@ -1,6 +1,6 @@
 import UIKit
 
-public protocol MenuItemType{
+public protocol MenuItemType {
     var icon: String { get }
     var title: String { get }
 }
@@ -17,9 +17,7 @@ class YQCollectionView: UICollectionView, UICollectionViewDelegate, UICollection
     var configuration: DropDownMenuConfiguration!
     
     init(frame: CGRect, collectionViewLayout: UICollectionViewLayout, items: [MenuItemType], config: DropDownMenuConfiguration) {
-        
         super.init(frame: frame, collectionViewLayout: collectionViewLayout)
-        
         configuration = config
         
         let nib = UINib(nibName: "YQCollectionViewCell", bundle: nil)
@@ -40,11 +38,11 @@ class YQCollectionView: UICollectionView, UICollectionViewDelegate, UICollection
         collectionView.deselectItemAtIndexPath(indexPath, animated: true)
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(YQCollectionViewCell.CellIdentifier, forIndexPath: indexPath) as! YQCollectionViewCell
         cell.menuItem = items[indexPath.item]
@@ -52,7 +50,7 @@ class YQCollectionView: UICollectionView, UICollectionViewDelegate, UICollection
         return cell
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int{
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
 }
@@ -63,16 +61,16 @@ class YQCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var title: UILabel!
     
-    var menuItem:MenuItemType!{
-        didSet{
+    var menuItem: MenuItemType! {
+        didSet {
             //TODO: config subviews
             image.image = UIImage(named: menuItem.icon)
             title.text = menuItem.title
         }
     }
     
-    var configuration:DropDownMenuConfiguration!{
-        didSet{
+    var configuration: DropDownMenuConfiguration! {
+        didSet {
             title.textColor = configuration.cellTextLabelColor
             title.font = configuration.cellTextLabelFont
         }
